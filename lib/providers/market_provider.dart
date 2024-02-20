@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:cryptostats/models/API.dart';
 import 'package:cryptostats/models/Cryptocurrency.dart';
 import 'package:cryptostats/models/LocalStorage.dart';
@@ -15,26 +13,40 @@ class MarketProvider with ChangeNotifier {
   }
 
   Future<void> fetchData() async {
-    List<dynamic> _markets = await API.getMarkets();
-    List<String> favorites = await LocalStorage.fetchFavorites();
+    try {
+      List<dynamic>? fetchedMarkets = await API.getMarkets();
+      if (fetchedMarkets != null) {
+        List<String> favorites = await LocalStorage.fetchFavorites();
 
-    List<CryptoCurrency> temp = [];
-    for (var market in _markets) {
-      CryptoCurrency newCrypto = CryptoCurrency.fromJSON(market);
-      if (favorites.contains(newCrypto.id!)) {
-        newCrypto.isFavorite = true;
+        List<CryptoCurrency> temp = [];
+        for (var market in fetchedMarkets) {
+          CryptoCurrency newCrypto = CryptoCurrency.fromJSON(market);
+          if (favorites.contains(newCrypto.id!)) {
+            newCrypto.isFavorite = true;
+          }
+          temp.add(newCrypto);
+        }
+        markets = temp;
+        isLoading = false;
+        notifyListeners();
+      } else {
+        // Handle case where markets data is null or empty
+        print("Failed to fetch markets data");
+        // Optionally, you can set isLoading to false and notifyListeners()
+        // to trigger UI update indicating that data fetching has finished.
+        isLoading = false;
+        notifyListeners();
       }
-      temp.add(newCrypto);
+    } catch (error) {
+      // Handle any errors that occur during data fetching
+      print("Error fetching markets data: $error");
+      // Optionally, you can set isLoading to false and notifyListeners()
+      // to trigger UI update indicating that data fetching has finished.
+      isLoading = false;
+      notifyListeners();
     }
-    markets = temp;
-    isLoading = false;
-    notifyListeners();
-
-    // Timer(const Duration(seconds: 3), () {
-    //   fetchData();
-    //   print("Data updated!");
-    // });
   }
+
 
   CryptoCurrency fetchCryptoById(String id) {
     CryptoCurrency crypto =

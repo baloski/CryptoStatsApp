@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "416711428289",
+    "project_id": "cryptostatsapp-d7bf2",
+    "storage_bucket": "cryptostatsapp-d7bf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416711428289:android:a0121196176408eebf6c40",
+        "android_client_info": {
+          "package_name": "com.example.cryptostats"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBi4gLml3OwBA1NvVCtcTHswBcDPjkPUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

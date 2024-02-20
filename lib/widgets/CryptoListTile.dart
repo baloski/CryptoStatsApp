@@ -9,8 +9,7 @@ class CryptoListTile extends StatelessWidget {
   final CryptoCurrency currentCrypto;
 
 
-  const CryptoListTile({Key? key, required this.currentCrypto})
-      : super(key: key);
+  const CryptoListTile({super.key, required this.currentCrypto});
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +29,9 @@ class CryptoListTile extends StatelessWidget {
                   )),
             );
           },
-          tileColor: Color.fromARGB(19, 92, 92, 92),
+          tileColor: const Color.fromARGB(19, 92, 92, 92),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 00),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 00),
           leading: CircleAvatar(
             backgroundColor: Colors.white,
             backgroundImage: NetworkImage(currentCrypto.image!),
@@ -42,7 +41,7 @@ class CryptoListTile extends StatelessWidget {
               Flexible(
                   child:
                   Text(currentCrypto.name!, overflow: TextOverflow.ellipsis)),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               (currentCrypto.isFavorite == false)
@@ -50,7 +49,7 @@ class CryptoListTile extends StatelessWidget {
                 onTap: () {
                   marketProvider.addFavorite(currentCrypto);
                 },
-                child: Icon(
+                child: const Icon(
                   CupertinoIcons.heart,
                   size: 18,
                 ),
@@ -59,7 +58,7 @@ class CryptoListTile extends StatelessWidget {
                 onTap: () {
                   marketProvider.removeFavorite(currentCrypto);
                 },
-                child: Icon(
+                child: const Icon(
                   CupertinoIcons.heart_fill,
                   size: 20,
                   color: Colors.red,
@@ -73,8 +72,8 @@ class CryptoListTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                "₹ " + currentCrypto.currentPrice!.toStringAsFixed(4),
-                style: TextStyle(
+                "₹ ${currentCrypto.currentPrice!.toStringAsFixed(4)}",
+                style: const TextStyle(
                   color: Color(0xff0395eb),
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -90,13 +89,13 @@ class CryptoListTile extends StatelessWidget {
                     // negative
                     return Text(
                       "${priceChangePercentage.toStringAsFixed(2)}% (${priceChange.toStringAsFixed(4)})",
-                      style: TextStyle(color: Colors.red),
+                      style: const TextStyle(color: Colors.red),
                     );
                   } else {
                     // positive
                     return Text(
                       "+${priceChangePercentage.toStringAsFixed(2)}% (+${priceChange.toStringAsFixed(4)})",
-                      style: TextStyle(color: Colors.green),
+                      style: const TextStyle(color: Colors.green),
                     );
                   }
                 },
@@ -104,7 +103,7 @@ class CryptoListTile extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),],
     );
