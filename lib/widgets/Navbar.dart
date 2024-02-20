@@ -65,18 +65,23 @@ class _NavbarState extends State<Navbar> {
           ),
           ListTile(
             leading: const Icon(Icons.account_circle_rounded),
-            title:  Text("${loggedInUser.firstName} ${loggedInUser.secondName}".toUpperCase(),),
+            title: loggedInUser.firstName != null && loggedInUser.secondName != null
+                ? Text("${loggedInUser.firstName} ${loggedInUser.secondName}".toUpperCase())
+                : Text("User1 User"),
             onTap: () {
               Navigator.of(context).pop();
             },
           ),
           ListTile(
             leading: const Icon(Icons.mail),
-            title:  Text("${loggedInUser.email} ",),
+            title: loggedInUser.email != null
+                ? Text("${loggedInUser.email}")
+                : Text("user1@gmail.com"),
             onTap: () {
               Navigator.of(context).pop();
             },
           ),
+
           InkWell(
             onTap: () {
               // Use PushNamed Function of Navigator class to push the named route
