@@ -67,7 +67,7 @@ class _NavbarState extends State<Navbar> {
             leading: const Icon(Icons.account_circle_rounded),
             title: loggedInUser.firstName != null && loggedInUser.secondName != null
                 ? Text("${loggedInUser.firstName} ${loggedInUser.secondName}".toUpperCase())
-                : Text("User1 User"),
+                : Text("User User"),
             onTap: () {
               Navigator.of(context).pop();
             },

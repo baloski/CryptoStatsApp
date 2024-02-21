@@ -1,6 +1,19 @@
-# cryptostats
+# CryptoStats
 
-A new Flutter project.
+CryptoStats is a simple android application that keeps you up to date with the latest cryptocurrency prices on the market, so you can make the right investments in crypto.
+
+###
+- Live tracking for cryptocurrencies on the market.
+- Stats for the chosen cryptocurrency on the price change the last 24h, market cap, market cap rank, low and high 24h, etc.
+- Favorite section for better visibility on the cryptocurrencies you are interested in.
+
+# Installation guide
+
+1. git clone https://github.com/baloski/CryptoStatsApp.git
+2. cd CryptoStatsApp
+3. flutter pub get
+4. flutter run
+
 
 ## Getting Started
 
